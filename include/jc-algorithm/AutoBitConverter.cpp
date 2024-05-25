@@ -1,20 +1,20 @@
 #include"AutoBitConverter.h"
 #include<algorithm>
-#include<jccpp/BitConverter.h>
+#include<jc-algorithm/BitConverter.h>
 
-using namespace jccpp;
+using namespace jc_algorithm;
 
-bool jccpp::AutoBitConverter::ShouldReverse()
+bool jc_algorithm::AutoBitConverter::ShouldReverse()
 {
 	return std::endian::native != _remote_endian;
 }
 
-jccpp::AutoBitConverter::AutoBitConverter(std::endian remote_endian) :
+jc_algorithm::AutoBitConverter::AutoBitConverter(std::endian remote_endian) :
 	_remote_endian(remote_endian)
 {
 }
 
-uint16_t jccpp::AutoBitConverter::ToUInt16(uint8_t *buffer, int offset)
+uint16_t jc_algorithm::AutoBitConverter::ToUInt16(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -25,7 +25,7 @@ uint16_t jccpp::AutoBitConverter::ToUInt16(uint8_t *buffer, int offset)
 	return ret;
 }
 
-int16_t jccpp::AutoBitConverter::ToInt16(uint8_t *buffer, int offset)
+int16_t jc_algorithm::AutoBitConverter::ToInt16(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -36,7 +36,7 @@ int16_t jccpp::AutoBitConverter::ToInt16(uint8_t *buffer, int offset)
 	return ret;
 }
 
-uint32_t jccpp::AutoBitConverter::ToUInt32(uint8_t *buffer, int offset)
+uint32_t jc_algorithm::AutoBitConverter::ToUInt32(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -47,7 +47,7 @@ uint32_t jccpp::AutoBitConverter::ToUInt32(uint8_t *buffer, int offset)
 	return ret;
 }
 
-int32_t jccpp::AutoBitConverter::ToInt32(uint8_t *buffer, int offset)
+int32_t jc_algorithm::AutoBitConverter::ToInt32(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -58,7 +58,7 @@ int32_t jccpp::AutoBitConverter::ToInt32(uint8_t *buffer, int offset)
 	return ret;
 }
 
-uint64_t jccpp::AutoBitConverter::ToUInt64(uint8_t *buffer, int offset)
+uint64_t jc_algorithm::AutoBitConverter::ToUInt64(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -69,7 +69,7 @@ uint64_t jccpp::AutoBitConverter::ToUInt64(uint8_t *buffer, int offset)
 	return ret;
 }
 
-int64_t jccpp::AutoBitConverter::ToInt64(uint8_t *buffer, int offset)
+int64_t jc_algorithm::AutoBitConverter::ToInt64(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -80,7 +80,7 @@ int64_t jccpp::AutoBitConverter::ToInt64(uint8_t *buffer, int offset)
 	return ret;
 }
 
-float jccpp::AutoBitConverter::ToFloat(uint8_t *buffer, int offset)
+float jc_algorithm::AutoBitConverter::ToFloat(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -91,7 +91,7 @@ float jccpp::AutoBitConverter::ToFloat(uint8_t *buffer, int offset)
 	return ret;
 }
 
-double jccpp::AutoBitConverter::ToDouble(uint8_t *buffer, int offset)
+double jc_algorithm::AutoBitConverter::ToDouble(uint8_t *buffer, int offset)
 {
 	if (ShouldReverse())
 	{
@@ -102,7 +102,7 @@ double jccpp::AutoBitConverter::ToDouble(uint8_t *buffer, int offset)
 	return ret;
 }
 
-std::array<uint8_t, 2> jccpp::AutoBitConverter::GetBytes(uint16_t value)
+std::array<uint8_t, 2> jc_algorithm::AutoBitConverter::GetBytes(uint16_t value)
 {
 	std::array<uint8_t, 2> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
@@ -113,7 +113,7 @@ std::array<uint8_t, 2> jccpp::AutoBitConverter::GetBytes(uint16_t value)
 	return ret;
 }
 
-std::array<uint8_t, 2> jccpp::AutoBitConverter::GetBytes(int16_t value)
+std::array<uint8_t, 2> jc_algorithm::AutoBitConverter::GetBytes(int16_t value)
 {
 	std::array<uint8_t, 2> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
@@ -124,7 +124,7 @@ std::array<uint8_t, 2> jccpp::AutoBitConverter::GetBytes(int16_t value)
 	return ret;
 }
 
-std::array<uint8_t, 4> jccpp::AutoBitConverter::GetBytes(uint32_t value)
+std::array<uint8_t, 4> jc_algorithm::AutoBitConverter::GetBytes(uint32_t value)
 {
 	std::array<uint8_t, 4> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
@@ -135,7 +135,7 @@ std::array<uint8_t, 4> jccpp::AutoBitConverter::GetBytes(uint32_t value)
 	return ret;
 }
 
-std::array<uint8_t, 4> jccpp::AutoBitConverter::GetBytes(int32_t value)
+std::array<uint8_t, 4> jc_algorithm::AutoBitConverter::GetBytes(int32_t value)
 {
 	std::array<uint8_t, 4> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
@@ -146,7 +146,7 @@ std::array<uint8_t, 4> jccpp::AutoBitConverter::GetBytes(int32_t value)
 	return ret;
 }
 
-std::array<uint8_t, 8> jccpp::AutoBitConverter::GetBytes(uint64_t value)
+std::array<uint8_t, 8> jc_algorithm::AutoBitConverter::GetBytes(uint64_t value)
 {
 	std::array<uint8_t, 8> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
@@ -157,7 +157,7 @@ std::array<uint8_t, 8> jccpp::AutoBitConverter::GetBytes(uint64_t value)
 	return ret;
 }
 
-std::array<uint8_t, 8> jccpp::AutoBitConverter::GetBytes(int64_t value)
+std::array<uint8_t, 8> jc_algorithm::AutoBitConverter::GetBytes(int64_t value)
 {
 	std::array<uint8_t, 8> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
@@ -168,7 +168,7 @@ std::array<uint8_t, 8> jccpp::AutoBitConverter::GetBytes(int64_t value)
 	return ret;
 }
 
-std::array<uint8_t, 4> jccpp::AutoBitConverter::GetBytes(float value)
+std::array<uint8_t, 4> jc_algorithm::AutoBitConverter::GetBytes(float value)
 {
 	std::array<uint8_t, 4> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
@@ -179,7 +179,7 @@ std::array<uint8_t, 4> jccpp::AutoBitConverter::GetBytes(float value)
 	return ret;
 }
 
-std::array<uint8_t, 8> jccpp::AutoBitConverter::GetBytes(double value)
+std::array<uint8_t, 8> jc_algorithm::AutoBitConverter::GetBytes(double value)
 {
 	std::array<uint8_t, 8> ret = BitConverter::GetBytes(value);
 	if (ShouldReverse())
