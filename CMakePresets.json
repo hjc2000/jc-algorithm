@@ -6,7 +6,6 @@
 			"hidden": true,
 			"generator": "Ninja",
 			"binaryDir": "${sourceDir}/jc_build",
-			"installDir": "$env{cpp_lib_build_scripts_path}/msys/.libs/jc-algorithm",
 			"cacheVariables": {
 				"cpp_lib_build_scripts_path": "$env{cpp_lib_build_scripts_path}",
 				"platform": "msys",
@@ -58,7 +57,6 @@
 			"hidden": true,
 			"generator": "Ninja",
 			"binaryDir": "${sourceDir}/jc_build",
-			"installDir": "$env{cpp_lib_build_scripts_path}/arm-none-eabi-cortex-m3/.libs/jc-algorithm",
 			"cacheVariables": {
 				"option_install_headers": true,
 				"cpp_lib_build_scripts_path": "$env{cpp_lib_build_scripts_path}",
