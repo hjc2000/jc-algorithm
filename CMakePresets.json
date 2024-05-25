@@ -10,6 +10,7 @@
 			"cacheVariables": {
 				"cpp_lib_build_scripts_path": "$env{cpp_lib_build_scripts_path}",
 				"platform": "msys",
+				"BUILD_SHARED_LIBS": true,
 				"CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
 				"CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
 				"CMAKE_C_FLAGS": "-Wall -Wextra -Wno-unused-parameter",
@@ -62,6 +63,7 @@
 				"option_install_headers": true,
 				"cpp_lib_build_scripts_path": "$env{cpp_lib_build_scripts_path}",
 				"platform": "arm-none-eabi-cortex-m3",
+				"BUILD_SHARED_LIBS": false,
 				"CMAKE_SYSTEM_PROCESSOR": "arm",
 				"CMAKE_SYSTEM_ARCH": "armv7-m",
 				"CMAKE_SYSTEM_NAME": "Generic",
