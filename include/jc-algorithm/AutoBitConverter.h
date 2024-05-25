@@ -3,7 +3,7 @@
 #include<bit>
 #include<stdint.h>
 
-namespace jc_algorithm
+namespace base
 {
 	/// <summary>
 	///		构造时设置好通信对方的大小端，进行转换时能够自动进行大小端转换。

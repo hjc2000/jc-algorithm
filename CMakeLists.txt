@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 include($ENV{cpp_lib_build_scripts_path}/cmake-module/setup.cmake)
 
-set(ProjectName jc-algorithm)
+set(ProjectName base)
 project(${ProjectName})
 
 set(CMAKE_CXX_STANDARD 20)

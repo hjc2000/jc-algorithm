@@ -2,7 +2,7 @@
 #include<array>
 #include<stdint.h>
 
-namespace jc_algorithm
+namespace base
 {
 	class BitConverter
 	{
