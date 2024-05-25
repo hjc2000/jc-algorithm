@@ -14,6 +14,11 @@ int16_t base::BitConverter::ToInt16(uint8_t *buffer, int offset)
 	return *p;
 }
 
+uint16_t base::BitConverter::ToUInt16(uint8_t high, uint8_t low)
+{
+	return ((uint16_t)high << 8) | low;
+}
+
 uint32_t base::BitConverter::ToUInt32(uint8_t *buffer, int offset)
 {
 	uint32_t *p = reinterpret_cast<uint32_t *>(buffer + offset);
@@ -24,6 +29,18 @@ int32_t base::BitConverter::ToInt32(uint8_t *buffer, int offset)
 {
 	int32_t *p = reinterpret_cast<int32_t *>(buffer + offset);
 	return *p;
+}
+
+uint32_t base::BitConverter::ToUInt32(uint8_t b3, uint8_t b2, uint8_t b1, uint8_t b0)
+{
+	uint16_t high = ToUInt16(b3, b2);
+	uint16_t low = ToUInt16(b1, b0);
+	return ToUInt32(high, low);
+}
+
+uint32_t base::BitConverter::ToUInt32(uint16_t high, uint16_t low)
+{
+	return ((uint32_t)high << 16) | low;
 }
 
 uint64_t base::BitConverter::ToUInt64(uint8_t *buffer, int offset)

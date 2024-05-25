@@ -15,9 +15,12 @@ namespace base
 	public:
 		static uint16_t ToUInt16(uint8_t *buffer, int offset);
 		static int16_t ToInt16(uint8_t *buffer, int offset);
+		static uint16_t ToUInt16(uint8_t high, uint8_t low);
 
 		static uint32_t ToUInt32(uint8_t *buffer, int offset);
 		static int32_t ToInt32(uint8_t *buffer, int offset);
+		static uint32_t ToUInt32(uint8_t b3, uint8_t b2, uint8_t b1, uint8_t b0);
+		static uint32_t ToUInt32(uint16_t high, uint16_t low);
 
 		static uint64_t ToUInt64(uint8_t *buffer, int offset);
 		static int64_t ToInt64(uint8_t *buffer, int offset);
