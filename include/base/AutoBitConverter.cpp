@@ -1,6 +1,6 @@
 #include"AutoBitConverter.h"
 #include<algorithm>
-#include<jc-algorithm/BitConverter.h>
+#include<base/BitConverter.h>
 
 using namespace base;
 
