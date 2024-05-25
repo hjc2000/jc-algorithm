@@ -1,5 +1,7 @@
 #pragma once
+#include<array>
 #include<stdint.h>
+#include<vector>
 
 namespace base
 {
@@ -47,6 +49,11 @@ namespace base
 		/// <param name="data"></param>
 		void Add(uint8_t data);
 
+		template<size_t length>
+		void Add(std::array<uint8_t, length> datas);
+
+		void Add(std::vector<uint8_t> datas);
+
 		/// <summary>
 		///		CRC16 寄存器的值。
 		/// </summary>
@@ -56,4 +63,13 @@ namespace base
 		uint8_t RegisterValueHighByte();
 		uint8_t RegisterValueLowByte();
 	};
+
+	template<size_t length>
+	inline void ModbusCrc16::Add(std::array<uint8_t, length> datas)
+	{
+		for (uint8_t data : datas)
+		{
+			Add(data);
+		}
+	}
 }
