@@ -1,0 +1,51 @@
+﻿{
+	"version": 3,
+	"configurePresets": [
+		{
+			"name": "windows_base",
+			"hidden": true,
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/jc_build",
+			"cacheVariables": {
+				"cpp_lib_build_scripts_path": "$env{cpp_lib_build_scripts_path}",
+				"platform": "msys",
+				"CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
+				"CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
+				"CMAKE_C_FLAGS": "-Wall -Wextra -Wno-unused-parameter",
+				"CMAKE_CXX_FLAGS": "-Wall -Wextra -Wno-unused-parameter",
+				"CMAKE_POSITION_INDEPENDENT_CODE": true,
+				"CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS": true
+			},
+			"condition": {
+				"type": "equals",
+				"lhs": "${hostSystemName}",
+				"rhs": "Windows"
+			},
+			"vendor": {
+				"microsoft.com/VisualStudioSettings/CMake/1.0": {
+					"intelliSenseMode": "linux-gcc-x64"
+				}
+			}
+		},
+		{
+			"name": "x64-debug",
+			"displayName": "x64 Debug",
+			"inherits": "windows_base",
+			"architecture": {
+				"value": "x64",
+				"strategy": "external"
+			},
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "x64-release",
+			"displayName": "x64 Release",
+			"inherits": "x64-debug",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		}
+	]
+}
