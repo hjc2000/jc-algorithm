@@ -46,6 +46,7 @@ namespace base
 		bool operator==(List<T> const &another) const;
 	};
 
+	#pragma region 实现
 	template<typename T>
 	inline List<T>::List(List<T> const &another)
 	{
@@ -185,4 +186,5 @@ namespace base
 	{
 		return _vector == another._vector;
 	}
+	#pragma endregion
 }
