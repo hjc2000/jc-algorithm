@@ -33,9 +33,10 @@ namespace base
 		T const &operator[](int const index) const override;
 
 		/// <summary>
-		///		强制转换为向量。
+		///		将本列表内的元素拷贝到向量中。
 		/// </summary>
-		operator std::vector<T>();
+		/// <returns></returns>
+		std::vector<T> ToVector();
 
 		/// <summary>
 		///		转发到 std::vector 的相等判断逻辑。
@@ -174,7 +175,7 @@ namespace base
 	}
 
 	template<typename T>
-	inline List<T>::operator std::vector<T>()
+	inline std::vector<T> List<T>::ToVector()
 	{
 		return _vector;
 	}
