@@ -7,7 +7,7 @@ using namespace base;
 ///		本方法会返回 nullptr。
 /// </summary>
 /// <returns></returns>
-std::shared_ptr<base::Stream> JoinedStream::TrtGetStream()
+std::shared_ptr<base::Stream> JoinedStream::TryGetStream()
 {
 	if (_stream_queue.Count() == 0 && _on_current_stream_end)
 	{
@@ -60,7 +60,7 @@ int32_t JoinedStream::Read(uint8_t *buffer, int32_t offset, int32_t count)
 	{
 		if (!_current_stream)
 		{
-			_current_stream = TrtGetStream();
+			_current_stream = TryGetStream();
 			if (!_current_stream)
 			{
 				return 0;

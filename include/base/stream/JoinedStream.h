@@ -15,7 +15,7 @@ namespace base
 		Queue<std::shared_ptr<base::Stream>> _stream_queue { };
 		std::shared_ptr<base::Stream> _current_stream;
 
-		std::shared_ptr<base::Stream> TrtGetStream();
+		std::shared_ptr<base::Stream> TryGetStream();
 
 	public:
 		/// <summary>
