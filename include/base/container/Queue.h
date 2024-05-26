@@ -100,6 +100,4 @@ namespace base
 			_queue.swap(empty_queue);
 		}
 	};
-
-	using Int32Queue = Queue<int32_t>;
 }
