@@ -101,5 +101,5 @@ namespace base
 		}
 	};
 
-	using IntQueue = Queue<int>;
+	using Int32Queue = Queue<int32_t>;
 }
