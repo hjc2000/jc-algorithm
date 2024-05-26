@@ -100,4 +100,6 @@ namespace base
 			_queue.swap(empty_queue);
 		}
 	};
+
+	using IntQueue = Queue<int>;
 }
