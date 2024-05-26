@@ -66,7 +66,7 @@ namespace base
 		/// </summary>
 		/// <param name="another"></param>
 		/// <returns></returns>
-		bool operator==(IList const &another) const
+		bool operator==(IList<T> const &another) const
 		{
 			return this == &another;
 		}
