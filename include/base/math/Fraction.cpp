@@ -1,16 +1,26 @@
 #include"Fraction.h"
 #include<numeric>
+#include<stdexcept>
+
+using namespace base;
 
 base::Fraction::Fraction(int64_t num, int64_t den)
 {
-	_num = num;
-	_den = den;
+	SetNum(num);
+	SetDen(den);
 }
 
 base::Fraction::Fraction(Fraction const &o)
 {
-	_num = o.Num();
-	_den = o.Den();
+	SetNum(o.Num());
+	SetDen(o.Den());
+}
+
+Fraction &base::Fraction::operator=(Fraction const &o)
+{
+	SetNum(o.Num());
+	SetDen(o.Den());
+	return *this;
 }
 
 int64_t base::Fraction::Num() const
@@ -30,10 +40,80 @@ int64_t base::Fraction::Den() const
 
 void base::Fraction::SetDen(int64_t value)
 {
+	if (value == 0)
+	{
+		throw std::invalid_argument { "分母不能为 0." };
+	}
+
 	_den = value;
 }
 
-void base::Fraction::Simplify()
+Fraction base::Fraction::Simplify() const
 {
+	if (_den == 0)
+	{
+		throw std::invalid_argument { "分母不能为 0." };
+	}
 
+	// 分子分母同时除以最大公约数
+	int64_t gcd_value = std::gcd(_num, _den);
+	int64_t scaled_num = _num / gcd_value;
+	int64_t scaled_den = _den / gcd_value;
+
+	if (scaled_den < 0)
+	{
+		// 如果分母小于 0，分子分母同时取相反数
+		scaled_num = -scaled_num;
+		scaled_den = -scaled_den;
+	}
+
+	Fraction ret { scaled_num, scaled_den };
+	return ret;
+}
+
+Fraction base::Fraction::operator-() const
+{
+	Fraction ret { -_num, _den };
+	return ret.Simplify();
+}
+
+Fraction base::Fraction::operator+(Fraction const &value) const
+{
+	// 通分后的分母为本对象的分母和 value 的分母的最小公倍数
+	int64_t scaled_den = std::lcm(_den, value.Den());
+
+	// 通分后的分子为本对象的分子乘上分母所乘的倍数
+	int64_t scaled_num = _num * (scaled_den / _den);
+	int64_t value_scaled_num = value.Num() * (scaled_den / value.Den());
+
+	Fraction ret {
+		scaled_num + value_scaled_num,
+		scaled_den,
+	};
+
+	return ret.Simplify();
+}
+
+Fraction base::Fraction::operator-(Fraction const &value) const
+{
+	Fraction ret = *this + (-value);
+	return ret.Simplify();
+}
+
+Fraction base::Fraction::Reciprocal() const
+{
+	Fraction ret { _den, _num };
+	return ret.Simplify();
+}
+
+Fraction &base::Fraction::operator+=(Fraction const &value)
+{
+	*this = *this + value;
+	return *this;
+}
+
+Fraction &base::Fraction::operator-=(Fraction const &value)
+{
+	*this = *this - value;
+	return *this;
 }
