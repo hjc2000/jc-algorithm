@@ -69,4 +69,4 @@ namespace base
 	};
 }
 
-std::ostream &operator<<(std::ostream &ostream, base::Fraction const fraction);
+std::ostream &operator<<(std::ostream &ostream, base::Fraction const &fraction);
