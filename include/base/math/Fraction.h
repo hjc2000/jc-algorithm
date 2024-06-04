@@ -29,6 +29,8 @@ namespace base
 		Fraction operator-() const;
 		Fraction operator+(Fraction const &value) const;
 		Fraction operator-(Fraction const &value) const;
+		Fraction operator*(Fraction const &value) const;
+		Fraction operator/(Fraction const &value) const;
 
 		/// <summary>
 		///		倒数

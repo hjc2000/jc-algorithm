@@ -100,6 +100,21 @@ Fraction base::Fraction::operator-(Fraction const &value) const
 	return ret.Simplify();
 }
 
+Fraction base::Fraction::operator*(Fraction const &value) const
+{
+	Fraction ret;
+	ret.SetNum(_num * value.Num());
+	ret.SetDen(_den * value.Den());
+	return ret.Simplify();
+}
+
+Fraction base::Fraction::operator/(Fraction const &value) const
+{
+	Fraction ret;
+	ret = *this * value.Reciprocal();
+	return ret.Simplify();
+}
+
 Fraction base::Fraction::Reciprocal() const
 {
 	Fraction ret { _den, _num };
