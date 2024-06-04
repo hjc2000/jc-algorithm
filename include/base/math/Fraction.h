@@ -10,10 +10,30 @@ namespace base
 		int64_t _den = 1;
 
 	public:
+		#pragma region 生命周期
+		/// <summary>
+		///		默认构造，分子为 0，分母为 1.
+		/// </summary>
 		Fraction() = default;
+
+		/// <summary>
+		///		整型转化为分数，则分子等于整型，分母为 1.
+		/// </summary>
+		/// <param name="num"></param>
+		Fraction(int64_t num);
+
 		Fraction(int64_t num, int64_t den);
 		Fraction(Fraction const &o);
+
 		Fraction &operator=(Fraction const &o);
+
+		/// <summary>
+		///		将整型赋值给分数，则变为分子为该整型，分母为 1 的分数。
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns></returns>
+		Fraction &operator=(int64_t o);
+		#pragma endregion
 
 		int64_t Num() const;
 		void SetNum(int64_t value);

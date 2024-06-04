@@ -4,6 +4,12 @@
 
 using namespace base;
 
+base::Fraction::Fraction(int64_t num)
+{
+	SetNum(num);
+	SetDen(1);
+}
+
 base::Fraction::Fraction(int64_t num, int64_t den)
 {
 	SetNum(num);
@@ -20,6 +26,13 @@ Fraction &base::Fraction::operator=(Fraction const &o)
 {
 	SetNum(o.Num());
 	SetDen(o.Den());
+	return *this;
+}
+
+Fraction &base::Fraction::operator=(int64_t o)
+{
+	SetNum(o);
+	SetDen(1);
 	return *this;
 }
 
