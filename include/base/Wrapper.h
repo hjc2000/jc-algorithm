@@ -6,8 +6,9 @@ namespace base
 	template <class T>
 	class Wrapper
 	{
-		Wrapper(Wrapper const &ref) = delete;
-		void operator=(Wrapper const &ref) = delete;
+	private:
+		Wrapper(Wrapper<T> const &o) = delete;
+		void operator=(Wrapper<T> const &o) = delete;
 		operator bool() = delete;
 
 	public:
@@ -27,40 +28,55 @@ namespace base
 		///		如果被包装对象是空指针，则返回 true。
 		/// </summary>
 		/// <returns></returns>
-		bool IsNull() const
-		{
-			return WrappedObj() == nullptr;
-		}
+		bool IsNull() const;
 
 		/// <summary>
 		///		访问本类中储存的被包装类型对象的指针
 		/// </summary>
 		/// <returns></returns>
-		T *operator->() const
-		{
-			return WrappedObj();
-		}
+		T *operator->() const;
 
 		/// <summary>
 		///		将本类对象强制转换为被包装类型的指针
 		/// </summary>
-		operator T *() const
-		{
-			return WrappedObj();
-		}
+		operator T *() const;
 
 		/// <summary>
 		///		将本类对象强制转换为被包装类型的指针的指针。
 		///		本函数返回的是指针的指针，也就是可以用来将被包装对象替换成另一个对象。
 		/// </summary>
-		operator T **()
-		{
-			return &WrappedObj();
-		}
+		operator T **();
 
-		bool operator==(Wrapper<T> const &o) const
-		{
-			return WrappedObj() == o.WrappedObj();
-		}
+		bool operator==(Wrapper<T> const &o) const;
 	};
+
+	template<class T>
+	inline bool Wrapper<T>::IsNull() const
+	{
+		return WrappedObj() == nullptr;
+	}
+
+	template<class T>
+	inline T *Wrapper<T>::operator->() const
+	{
+		return WrappedObj();
+	}
+
+	template<class T>
+	inline Wrapper<T>::operator T *() const
+	{
+		return WrappedObj();
+	}
+
+	template<class T>
+	inline Wrapper<T>::operator T **()
+	{
+		return &WrappedObj();
+	}
+
+	template<class T>
+	inline bool Wrapper<T>::operator==(Wrapper<T> const &o) const
+	{
+		return WrappedObj() == o.WrappedObj();
+	}
 }
