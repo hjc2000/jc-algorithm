@@ -50,6 +50,8 @@ namespace base
 		bool operator==(Wrapper<T> const &o) const;
 	};
 
+	/* 实现 */
+
 	template<class T>
 	inline bool Wrapper<T>::IsNull() const
 	{

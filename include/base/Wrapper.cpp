@@ -25,7 +25,7 @@ public:
 	}
 };
 
-Wrapper<int> &GetIntWrapper()
+Wrapper<int> &CreateIntWrapper()
 {
 	static IntWrapper o;
 	return o;
