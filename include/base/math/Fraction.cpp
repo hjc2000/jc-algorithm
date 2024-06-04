@@ -110,8 +110,7 @@ Fraction base::Fraction::operator*(Fraction const &value) const
 
 Fraction base::Fraction::operator/(Fraction const &value) const
 {
-	Fraction ret;
-	ret = *this * value.Reciprocal();
+	Fraction ret { *this * value.Reciprocal() };
 	return ret.Simplify();
 }
 
@@ -130,5 +129,17 @@ Fraction &base::Fraction::operator+=(Fraction const &value)
 Fraction &base::Fraction::operator-=(Fraction const &value)
 {
 	*this = *this - value;
+	return *this;
+}
+
+Fraction &base::Fraction::operator*=(Fraction const &value)
+{
+	*this = *this * value;
+	return *this;
+}
+
+Fraction &base::Fraction::operator/=(Fraction const &value)
+{
+	*this = *this / value;
 	return *this;
 }

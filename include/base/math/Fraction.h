@@ -40,5 +40,7 @@ namespace base
 
 		Fraction &operator+=(Fraction const &value);
 		Fraction &operator-=(Fraction const &value);
+		Fraction &operator*=(Fraction const &value);
+		Fraction &operator/=(Fraction const &value);
 	};
 }
