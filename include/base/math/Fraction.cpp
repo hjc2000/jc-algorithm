@@ -156,3 +156,14 @@ Fraction &base::Fraction::operator/=(Fraction const &value)
 	*this = *this / value;
 	return *this;
 }
+
+std::string base::Fraction::ToString() const
+{
+	return std::to_string(_num) + " / " + std::to_string(_den);
+}
+
+std::ostream &operator<<(std::ostream &ostream, base::Fraction const fraction)
+{
+	ostream << fraction.ToString();
+	return ostream;
+}

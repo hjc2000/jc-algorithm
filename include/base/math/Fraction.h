@@ -1,5 +1,7 @@
 #pragma once
+#include<ostream>
 #include<stdint.h>
+#include<string>
 
 namespace base
 {
@@ -62,5 +64,9 @@ namespace base
 		Fraction &operator-=(Fraction const &value);
 		Fraction &operator*=(Fraction const &value);
 		Fraction &operator/=(Fraction const &value);
+
+		std::string ToString() const;
 	};
 }
+
+std::ostream &operator<<(std::ostream &ostream, base::Fraction const fraction);
