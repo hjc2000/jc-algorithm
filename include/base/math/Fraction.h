@@ -65,8 +65,24 @@ namespace base
 		Fraction &operator*=(Fraction const &value);
 		Fraction &operator/=(Fraction const &value);
 
+		/// <summary>
+		///		获取分子除以分母的值
+		/// </summary>
+		/// <returns></returns>
+		int64_t Div() const;
+
+		/// <summary>
+		///		获取分子除以分母的余数
+		/// </summary>
+		/// <returns></returns>
+		int64_t Mod() const;
+
 		std::string ToString() const;
 	};
 }
 
 std::ostream &operator<<(std::ostream &ostream, base::Fraction const &fraction);
+base::Fraction operator+(int64_t left, base::Fraction const &right);
+base::Fraction operator-(int64_t left, base::Fraction const &right);
+base::Fraction operator*(int64_t left, base::Fraction const &right);
+base::Fraction operator/(int64_t left, base::Fraction const &right);

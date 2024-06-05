@@ -157,6 +157,16 @@ Fraction &base::Fraction::operator/=(Fraction const &value)
 	return *this;
 }
 
+int64_t base::Fraction::Div() const
+{
+	return _num / _den;
+}
+
+int64_t base::Fraction::Mod() const
+{
+	return _num % _den;
+}
+
 std::string base::Fraction::ToString() const
 {
 	return std::to_string(_num) + " / " + std::to_string(_den);
@@ -166,4 +176,24 @@ std::ostream &operator<<(std::ostream &ostream, base::Fraction const &fraction)
 {
 	ostream << fraction.ToString();
 	return ostream;
+}
+
+base::Fraction operator+(int64_t left, base::Fraction const &right)
+{
+	return base::Fraction { left } + right;
+}
+
+base::Fraction operator-(int64_t left, base::Fraction const &right)
+{
+	return base::Fraction { left } - right;
+}
+
+base::Fraction operator*(int64_t left, base::Fraction const &right)
+{
+	return base::Fraction(left) * right;
+}
+
+base::Fraction operator/(int64_t left, base::Fraction const &right)
+{
+	return base::Fraction { left } / right;
 }
