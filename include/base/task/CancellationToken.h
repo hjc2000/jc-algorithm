@@ -9,6 +9,7 @@
 #include<iostream>
 #include<map>
 #include<memory>
+#include<stdexcept>
 
 #if HAS_THREAD
 #include<mutex>
