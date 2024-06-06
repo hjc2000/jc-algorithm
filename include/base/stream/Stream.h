@@ -62,7 +62,17 @@ namespace base
 		/// <param name="count">从 buffer 中取多少个字节。</param>
 		virtual void Write(uint8_t const *buffer, int32_t offset, int32_t count) = 0;
 
-		virtual void CopyTo(std::shared_ptr<base::Stream> dst_stream, std::shared_ptr<base::CancellationToken> cancellationToken);
+		/// <summary>
+		///		将本流拷贝到 dst_stream 中。
+		///		* 对于有操作系统的平台（判断依据 HAS_THREAD 宏），使用 16kB 的临时缓冲区来拷贝。
+		///		  对于无操作系统的平台，通常是单片机，使用 128B 的临时缓冲区来拷贝。
+		/// </summary>
+		/// <param name="dst_stream"></param>
+		/// <param name="cancellationToken"></param>
+		virtual void CopyTo(
+			std::shared_ptr<base::Stream> dst_stream,
+			std::shared_ptr<base::CancellationToken> cancellationToken
+		);
 
 		/// <summary>
 		///		* 对于写入的数据，作用是将其从内部缓冲区转移到底层。
