@@ -1,4 +1,7 @@
 #pragma once
+#include<base/task/CancellationToken.h>
+#include<base/task/TaskCanceledException.h>
+#include<memory>
 #include<stdint.h>
 
 namespace base
@@ -58,6 +61,8 @@ namespace base
 		/// <param name="offset">从 buffer 中取数据的起始位置。</param>
 		/// <param name="count">从 buffer 中取多少个字节。</param>
 		virtual void Write(uint8_t const *buffer, int32_t offset, int32_t count) = 0;
+
+		virtual void CopyTo(std::shared_ptr<base::Stream> dst_stream, std::shared_ptr<base::CancellationToken> cancellationToken);
 
 		/// <summary>
 		///		* 对于写入的数据，作用是将其从内部缓冲区转移到底层。

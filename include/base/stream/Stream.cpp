@@ -1,3 +1,7 @@
+#ifndef HAS_THREAD
+#define HAS_THREAD 0
+#endif
+
 #include"Stream.h"
 
 using namespace base;
@@ -27,5 +31,30 @@ int32_t Stream::ReadExactly(uint8_t *buffer, int32_t offset, int32_t count)
 		}
 
 		total_read += have_read;
+	}
+}
+
+void Stream::CopyTo(std::shared_ptr<base::Stream> dst_stream, std::shared_ptr<base::CancellationToken> cancellationToken)
+{
+	#if HAS_THREAD
+	uint8_t temp_buf[1024 * 16];
+	#else
+	uint8_t temp_buf[128];
+	#endif
+
+	while (true)
+	{
+		if (cancellationToken && cancellationToken->IsCancellationRequested())
+		{
+			throw base::TaskCanceledException { };
+		}
+
+		int32_t have_read = Read(temp_buf, 0, sizeof(temp_buf));
+		if (have_read == 0)
+		{
+			return;
+		}
+
+		dst_stream->Write(temp_buf, 0, have_read);
 	}
 }
