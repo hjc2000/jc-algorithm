@@ -1,6 +1,6 @@
-#include"AutoBitConverter.h"
-#include<algorithm>
-#include<base/BitConverter.h>
+#include "AutoBitConverter.h"
+#include <algorithm>
+#include <base/BitConverter.h>
 
 using namespace base;
 
@@ -9,8 +9,8 @@ bool base::AutoBitConverter::ShouldReverse()
 	return std::endian::native != _remote_endian;
 }
 
-base::AutoBitConverter::AutoBitConverter(std::endian remote_endian) :
-	_remote_endian(remote_endian)
+base::AutoBitConverter::AutoBitConverter(std::endian remote_endian)
+	: _remote_endian(remote_endian)
 {
 }
 

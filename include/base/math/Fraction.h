@@ -1,10 +1,11 @@
 #pragma once
-#include<ostream>
-#include<stdint.h>
-#include<string>
+#include <ostream>
+#include <stdint.h>
+#include <string>
 
 namespace base
 {
+	/// @brief 分数类
 	class Fraction
 	{
 	private:
@@ -12,30 +13,30 @@ namespace base
 		int64_t _den = 1;
 
 	public:
-		#pragma region 生命周期
-		/// <summary>
-		///		默认构造，分子为 0，分母为 1.
-		/// </summary>
+#pragma region 生命周期
+		/// @brief 默认构造，分子为 0，分母为 1.
 		Fraction() = default;
 
-		/// <summary>
-		///		整型转化为分数，则分子等于整型，分母为 1.
-		/// </summary>
-		/// <param name="num"></param>
+		/// @brief 整型转化为分数，则分子等于整型，分母为 1.
+		/// @param num
 		Fraction(int64_t num);
 
+		/// @brief 通过分子，分母进行构造。
+		/// @param num 分子
+		/// @param den 分母
 		Fraction(int64_t num, int64_t den);
+
+		/// @brief 拷贝构造
+		/// @param o
 		Fraction(Fraction const &o);
 
 		Fraction &operator=(Fraction const &o);
 
-		/// <summary>
-		///		将整型赋值给分数，则变为分子为该整型，分母为 1 的分数。
-		/// </summary>
-		/// <param name="o"></param>
-		/// <returns></returns>
+		/// @brief 将整型赋值给分数，则变为分子为该整型，分母为 1 的分数。
+		/// @param o
+		/// @return
 		Fraction &operator=(int64_t o);
-		#pragma endregion
+#pragma endregion
 
 		int64_t Num() const;
 		void SetNum(int64_t value);
@@ -43,9 +44,8 @@ namespace base
 		int64_t Den() const;
 		void SetDen(int64_t value);
 
-		/// <summary>
-		///		化简分数，返回化简后的值。
-		/// </summary>
+		/// @brief 化简分数，返回化简后的值。
+		/// @return
 		Fraction Simplify() const;
 
 		Fraction operator-() const;
@@ -54,10 +54,8 @@ namespace base
 		Fraction operator*(Fraction const &value) const;
 		Fraction operator/(Fraction const &value) const;
 
-		/// <summary>
-		///		倒数
-		/// </summary>
-		/// <returns></returns>
+		/// @brief 倒数
+		/// @return
 		Fraction Reciprocal() const;
 
 		Fraction &operator+=(Fraction const &value);
@@ -65,18 +63,21 @@ namespace base
 		Fraction &operator*=(Fraction const &value);
 		Fraction &operator/=(Fraction const &value);
 
-		/// <summary>
-		///		获取分子除以分母的值
-		/// </summary>
-		/// <returns></returns>
+		/// @brief 获取分子除以分母的值
+		/// @return
 		int64_t Div() const;
 
-		/// <summary>
-		///		获取分子除以分母的余数
-		/// </summary>
-		/// <returns></returns>
+		/// @brief 获取分子除以分母的余数
+		/// @return
 		int64_t Mod() const;
 
+		double ToDouble()
+		{
+			return static_cast<double>(_num) / _den;
+		}
+
+		/// @brief 将分数转化为字符串
+		/// @return
 		std::string ToString() const;
 	};
 }

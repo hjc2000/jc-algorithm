@@ -1,25 +1,20 @@
 #pragma once
-#include<array>
-#include<bit>
-#include<stdint.h>
+#include <array>
+#include <bit>
+#include <stdint.h>
 
 namespace base
 {
-	/// <summary>
-	///		构造时设置好通信对方的大小端，进行转换时能够自动进行大小端转换。
-	/// </summary>
+	/// @brief 构造时设置好通信对方的大小端，进行转换时能够自动进行大小端转换。
 	class AutoBitConverter
 	{
 	private:
 		std::endian _remote_endian;
-
 		bool ShouldReverse();
 
 	public:
-		/// <summary>
-		///		对方主机的字节序
-		/// </summary>
-		/// <param name="remote_endian"></param>
+		/// @brief
+		/// @param remote_endian 对方主机的字节序
 		AutoBitConverter(std::endian remote_endian);
 
 		uint16_t ToUInt16(uint8_t *buffer, int offset);

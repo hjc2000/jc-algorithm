@@ -1,6 +1,6 @@
 #pragma once
-#include<array>
-#include<stdint.h>
+#include <array>
+#include <stdint.h>
 
 namespace base
 {

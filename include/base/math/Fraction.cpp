@@ -1,6 +1,6 @@
-#include"Fraction.h"
-#include<numeric>
-#include<stdexcept>
+#include "Fraction.h"
+#include <numeric>
+#include <stdexcept>
 
 using namespace base;
 
@@ -55,7 +55,7 @@ void base::Fraction::SetDen(int64_t value)
 {
 	if (value == 0)
 	{
-		throw std::invalid_argument { "分母不能为 0." };
+		throw std::invalid_argument{"分母不能为 0."};
 	}
 
 	_den = value;
@@ -65,7 +65,7 @@ Fraction base::Fraction::Simplify() const
 {
 	if (_den == 0)
 	{
-		throw std::invalid_argument { "分母不能为 0." };
+		throw std::invalid_argument{"分母不能为 0."};
 	}
 
 	// 分子分母同时除以最大公约数
@@ -80,13 +80,13 @@ Fraction base::Fraction::Simplify() const
 		scaled_den = -scaled_den;
 	}
 
-	Fraction ret { scaled_num, scaled_den };
+	Fraction ret{scaled_num, scaled_den};
 	return ret;
 }
 
 Fraction base::Fraction::operator-() const
 {
-	Fraction ret { -_num, _den };
+	Fraction ret{-_num, _den};
 	return ret.Simplify();
 }
 
@@ -99,7 +99,7 @@ Fraction base::Fraction::operator+(Fraction const &value) const
 	int64_t scaled_num = _num * (scaled_den / _den);
 	int64_t value_scaled_num = value.Num() * (scaled_den / value.Den());
 
-	Fraction ret {
+	Fraction ret{
 		scaled_num + value_scaled_num,
 		scaled_den,
 	};
@@ -123,13 +123,13 @@ Fraction base::Fraction::operator*(Fraction const &value) const
 
 Fraction base::Fraction::operator/(Fraction const &value) const
 {
-	Fraction ret { *this * value.Reciprocal() };
+	Fraction ret{*this * value.Reciprocal()};
 	return ret.Simplify();
 }
 
 Fraction base::Fraction::Reciprocal() const
 {
-	Fraction ret { _den, _num };
+	Fraction ret{_den, _num};
 	return ret.Simplify();
 }
 
@@ -180,12 +180,12 @@ std::ostream &operator<<(std::ostream &ostream, base::Fraction const &fraction)
 
 base::Fraction operator+(int64_t left, base::Fraction const &right)
 {
-	return base::Fraction { left } + right;
+	return base::Fraction{left} + right;
 }
 
 base::Fraction operator-(int64_t left, base::Fraction const &right)
 {
-	return base::Fraction { left } - right;
+	return base::Fraction{left} - right;
 }
 
 base::Fraction operator*(int64_t left, base::Fraction const &right)
@@ -195,5 +195,5 @@ base::Fraction operator*(int64_t left, base::Fraction const &right)
 
 base::Fraction operator/(int64_t left, base::Fraction const &right)
 {
-	return base::Fraction { left } / right;
+	return base::Fraction{left} / right;
 }
