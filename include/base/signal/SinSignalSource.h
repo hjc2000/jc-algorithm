@@ -4,23 +4,21 @@
 namespace base
 {
 	/// @brief 正弦信号源 y = sin(w * t)
-	/// @tparam T
-	template <typename SignalType, typename TimeType>
 	class SinSignalSource
-		: base::ISignalSource<SignalType, TimeType>
+		: base::ISignalSource<double, double>
 	{
 	private:
-		TimeType _periodic;
+		double _periodic;
 
 	public:
 		/// @brief
 		/// @param periodic 最小正周期
-		SinSignalSource(TimeType periodic)
+		SinSignalSource(double periodic)
 		{
 			_periodic = periodic;
 		}
 
-		SignalType Sample(TimeType time) override
+		double Sample(double time) override
 		{
 			// y = sin(w * t)
 			// w = 2pi / T
