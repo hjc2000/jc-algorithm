@@ -1,11 +1,10 @@
-#include"ModbusCrc16.h"
+#include "ModbusCrc16.h"
 
 using namespace base;
 
-ModbusCrc16::ModbusCrc16(uint16_t polynomial) :
-	_polynomial(polynomial)
+ModbusCrc16::ModbusCrc16(uint16_t polynomial)
+	: _polynomial(polynomial)
 {
-
 }
 
 void ModbusCrc16::Add(uint8_t data)
