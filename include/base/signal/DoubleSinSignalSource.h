@@ -4,7 +4,7 @@
 namespace base
 {
 	/// @brief 正弦信号源 y = sin(w * t)
-	class SinSignalSource
+	class DoubleSinSignalSource
 		: base::ISignalSource<double, double>
 	{
 	private:
@@ -13,17 +13,8 @@ namespace base
 	public:
 		/// @brief
 		/// @param periodic 最小正周期
-		SinSignalSource(double periodic)
-		{
-			_periodic = periodic;
-		}
+		DoubleSinSignalSource(double periodic);
 
-		double Sample(double time) override
-		{
-			// y = sin(w * t)
-			// w = 2pi / T
-			// y = sin(2pi / T * t)
-			return sin(2 * M_PI * time / _periodic);
-		}
+		double Sample(double time) override;
 	};
 }
