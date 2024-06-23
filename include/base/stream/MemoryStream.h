@@ -1,10 +1,10 @@
 #pragma once
-#include<base/stream/Stream.h>
-#include<stdexcept>
+#include <base/stream/Stream.h>
+#include <stdexcept>
 
 namespace base
 {
-	class MemoryStream :public base::Stream
+	class MemoryStream : public base::Stream
 	{
 	private:
 		int32_t _buffer_size;
@@ -15,20 +15,16 @@ namespace base
 		/// </summary>
 		int32_t _position = 0;
 
-		/// <summary>
-		///		流的长度。
-		/// 
-		///		* 流的长度可以小于缓冲区长度。此标志用来表示流的长度，也是缓冲区中有效数据的长度。
-		///		* 缓冲区中，第 _length 字节是无效的数据。当 _length = 0 时，_buffer[0] 是无效数据，流中没有数据。
-		///		  _length 不为 0 时，[0 , _length - 1] 闭区间上是有效数据。
-		/// </summary>
+		/// @brief 流的长度。
+		/// @note 流的长度可以小于缓冲区长度。此标志用来表示流的长度，也是缓冲区中有效数据的长度。
+		/// @note 缓冲区中，第 _length 字节是无效的数据。
+		/// 	@li 当 _length = 0 时，_buffer[0] 是无效数据，流中没有数据。
+		/// 	@li _length 不为 0 时，[0 , _length - 1] 闭区间上是有效数据。
 		int32_t _length = 0;
 
 	public:
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="max_size">内部缓冲区的最大尺寸。小于等于 0 会抛出异常。</param>
+		/// @brief
+		/// @param max_size 内部缓冲区的最大尺寸。小于等于 0 会抛出异常。
 		MemoryStream(int32_t max_size);
 
 		~MemoryStream()
@@ -41,31 +37,27 @@ namespace base
 			return _buffer;
 		}
 
-		/// <summary>
-		///		获取内部缓冲区大小。这就是本流能够储存的最大的字节数。
-		/// </summary>
-		/// <returns></returns>
+		/// @brief 获取内部缓冲区大小。这就是本流能够储存的最大的字节数。
+		/// @return
 		int32_t BufferSize() const
 		{
 			return _buffer_size;
 		}
 
-		/// <summary>
-		///		从当前 Position 到 Length，总共有多少个可读字节。
-		///		是 Length - Position，不是 max_size - Position，因为 Length 指向的字节以及后面的字节
-		///		都是垃圾数据。
-		/// </summary>
-		/// <returns></returns>
+		/// @brief 从当前 Position 到 Length，总共有多少个可读字节。
+		/// @note 是 Length - Position，不是 max_size - Position，
+		/// 	  因为 Length 指向的字节以及后面的字节都是垃圾数据。
+		///
+		/// @return
 		int32_t AvaliableToRead() const
 		{
 			return _length - _position;
 		}
 
-		/// <summary>
-		///		从当前的 Position 开始，缓冲区中剩余的可写入空间。
-		///		不是 Length - Position，而是 max_size - Position。
-		/// </summary>
-		/// <returns></returns>
+		/// @brief 从当前的 Position 开始，缓冲区中剩余的可写入空间。
+		///	@note 不是 Length - Position，而是 max_size - Position。
+		///
+		/// @return
 		int32_t AvaliableToWrite() const
 		{
 			return _buffer_size - _position;
@@ -79,43 +71,32 @@ namespace base
 
 		int64_t Length() override;
 
-		/// <summary>
-		///		
-		/// </summary>
-		/// <param name="value"></param>
-		/// <exception cref="ArgumentException">value 大于 max_size 会抛出异常。</exception>
+		/// @brief
+		/// @param value
+		/// @exception std::invalid_argument -- value 大于 max_size 会抛出异常。
 		void SetLength(int64_t value) override;
 
-		/// <summary>
-		///		
-		/// </summary>
-		/// <param name="buffer"></param>
-		/// <param name="offset"></param>
-		/// <param name="count"></param>
-		/// <returns></returns>
-		/// <exception cref="ArgumentNullException">buffer 为空指针会抛出异常。</exception>
+		/// @brief
+		/// @param buffer
+		/// @param offset
+		/// @param count
+		/// @return
+		/// @exception std::invalid_argument -- buffer 为空指针会抛出 std::invalid_argument 异常。
 		int32_t Read(uint8_t *buffer, int32_t offset, int32_t count) override;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="buffer"></param>
-		/// <param name="offset"></param>
-		/// <param name="count"></param>
-		/// <exception cref="ArgumentNullException">data_buf 为空指针会抛出异常。</exception>
-		/// <exception cref="BufferOverflowException">count 大于 AvaliableToWrite 时会抛出异常。</exception>
+		/// @brief
+		/// @param buffer
+		/// @param offset
+		/// @param count
+		/// @exception std::invalid_argument
 		void Write(uint8_t const *buffer, int32_t offset, int32_t count) override;
 
 		void Flush() override;
 
-		/// <summary>
-		///		没有任何作用。
-		/// </summary>
+		/// @brief 没有任何作用。
 		void Close() override;
 
-		/// <summary>
-		///		清空流，将 长度和位置都恢复为 0.
-		/// </summary>
+		/// @brief 清空流，将 长度和位置都恢复为 0.
 		void Clear()
 		{
 			_position = 0;
@@ -123,7 +104,6 @@ namespace base
 		}
 
 		int64_t Position() override;
-
 		void SetPosition(int64_t value) override;
 	};
 }

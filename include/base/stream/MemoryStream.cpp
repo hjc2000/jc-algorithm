@@ -4,7 +4,7 @@ base::MemoryStream::MemoryStream(int32_t max_size)
 {
 	if (max_size <= 0)
 	{
-		throw std::invalid_argument { "max_size 不能小于等于 0。" };
+		throw std::invalid_argument{"max_size 不能小于等于 0。"};
 	}
 
 	_buffer_size = max_size;
@@ -35,7 +35,7 @@ void base::MemoryStream::SetLength(int64_t value)
 {
 	if (value > _buffer_size)
 	{
-		throw std::invalid_argument { "value 不能大于缓冲区大小。" };
+		throw std::invalid_argument{"value 不能大于缓冲区大小。"};
 	}
 
 	_length = value;
@@ -49,7 +49,7 @@ int32_t base::MemoryStream::Read(uint8_t *buffer, int32_t offset, int32_t count)
 {
 	if (!buffer)
 	{
-		throw std::invalid_argument { "buffer 不能是空指针" };
+		throw std::invalid_argument{"buffer 不能是空指针"};
 	}
 
 	if (AvaliableToRead() == 0)
@@ -67,11 +67,9 @@ int32_t base::MemoryStream::Read(uint8_t *buffer, int32_t offset, int32_t count)
 		have_read = count;
 	}
 
-	std::copy(
-		_buffer + _position,
-		_buffer + _position + have_read,
-		buffer + offset
-	);
+	std::copy(_buffer + _position,
+			  _buffer + _position + have_read,
+			  buffer + offset);
 
 	return have_read;
 }
@@ -80,19 +78,17 @@ void base::MemoryStream::Write(uint8_t const *buffer, int32_t offset, int32_t co
 {
 	if (!buffer)
 	{
-		throw std::invalid_argument { "buffer 不能是空指针" };
+		throw std::invalid_argument{"buffer 不能是空指针"};
 	}
 
 	if (count > AvaliableToWrite())
 	{
-		throw std::overflow_error { "缓冲区剩余空间无法接受这么多数据" };
+		throw std::overflow_error{"缓冲区剩余空间无法接受这么多数据"};
 	}
 
-	std::copy(
-		buffer + offset,
-		buffer + offset + count,
-		_buffer + _position
-	);
+	std::copy(buffer + offset,
+			  buffer + offset + count,
+			  _buffer + _position);
 
 	_position += count;
 	if (_position > _length)
@@ -118,7 +114,7 @@ void base::MemoryStream::SetPosition(int64_t value)
 {
 	if (_position > _length)
 	{
-		throw std::invalid_argument { "value 不能流的长度。" };
+		throw std::invalid_argument{"value 不能流的长度。"};
 	}
 
 	_position = value;

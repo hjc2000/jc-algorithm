@@ -1,18 +1,18 @@
 #pragma once
-#include<base/container/Queue.h>
-#include<base/stream/Stream.h>
-#include<functional>
-#include<memory>
+#include <base/container/Queue.h>
+#include <base/stream/Stream.h>
+#include <functional>
+#include <memory>
 
 namespace base
 {
-	class JoinedStream :public base::Stream
+	class JoinedStream : public base::Stream
 	{
 		/// <summary>
 		///		用来统计总共从 Read 函数中读取过多少字节。
 		/// </summary>
 		int64_t _position = 0;
-		Queue<std::shared_ptr<base::Stream>> _stream_queue { };
+		Queue<std::shared_ptr<base::Stream>> _stream_queue{};
 		std::shared_ptr<base::Stream> _current_stream;
 
 		std::shared_ptr<base::Stream> TryGetStream();
@@ -30,7 +30,7 @@ namespace base
 		/// <param name="stream"></param>
 		void AppendStream(std::shared_ptr<base::Stream> stream);
 
-		#pragma region Stream
+#pragma region Stream
 		bool CanRead() override;
 		bool CanWrite() override;
 		bool CanSeek() override;
@@ -46,6 +46,6 @@ namespace base
 
 		int64_t Position() override;
 		void SetPosition(int64_t value) override;
-		#pragma endregion
+#pragma endregion
 	};
 }
