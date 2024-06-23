@@ -1,4 +1,4 @@
-#include"CircleBufferMemoryStream.h"
+#include "CircleBufferMemoryStream.h"
 
 using namespace std;
 using namespace base;
@@ -17,59 +17,53 @@ CircleBufferMemoryStream::~CircleBufferMemoryStream()
 	delete[] _buffer;
 }
 
-/// <summary>
-///		递增头指针
-/// </summary>
-/// <param name="value"></param>
+/// @brief 递增头指针
+/// @param value
 void CircleBufferMemoryStream::AddHead(int32_t value)
 {
 	_head = (_head + value) % _buffer_size;
 }
 
-/// <summary>
-///		递增尾指针
-/// </summary>
-/// <param name="value"></param>
+/// @brief 递增尾指针
+/// @param value
 void CircleBufferMemoryStream::AddTail(int32_t value)
 {
 	_tail = (_tail + value) % _buffer_size;
 }
 
-/// <summary>
-///		以非环绕方式读取。从 _head 处开始读取 count 个字节，不管会不会超出边界。
-///		所以调用本方法前需要检查。
-/// </summary>
-/// <param name="buffer"></param>
-/// <param name="offset"></param>
-/// <param name="count"></param>
-/// <returns></returns>
+/// @brief 以非环绕方式读取。
+///	@warning 从 _head 处开始读取 count 个字节，不管会不会超出边界。
+///			 所以调用本方法前需要检查。
+///
+/// @param buffer
+/// @param offset
+/// @param count
+/// @return
 int32_t CircleBufferMemoryStream::ReadNonCircular(uint8_t *buffer, int32_t offset, int32_t count)
 {
 	std::copy(
 		_buffer + _head,
 		_buffer + _head + count,
-		buffer + offset
-	);
+		buffer + offset);
 
 	AddHead(count);
 	_is_full = false;
 	return count;
 }
 
-/// <summary>
-///		以非环绕方式写入。从 _tail 的位置开始往后写入 count 个字节，不会管会不会超出边界，
-///		所以调用本方法前需要检查。
-/// </summary>
-/// <param name="buffer"></param>
-/// <param name="offset"></param>
-/// <param name="count"></param>
+/// @brief 以非环绕方式写入。
+/// @warning 从 _tail 的位置开始往后写入 count 个字节，不会管会不会超出边界，
+///			 所以调用本方法前需要检查。
+///
+/// @param buffer
+/// @param offset
+/// @param count
 void CircleBufferMemoryStream::WriteNonCircular(uint8_t const *buffer, int32_t offset, int32_t count)
 {
 	std::copy(
 		buffer + offset,
 		buffer + offset + count,
-		_buffer + _tail
-	);
+		_buffer + _tail);
 
 	AddTail(count);
 	_is_full = _head == _tail;
@@ -128,23 +122,24 @@ int64_t CircleBufferMemoryStream::Length()
 		return _tail - _head;
 	}
 
-	/*
-	* _head 大于 _tail。说明 _tail 穿梭了。
-	*
-	* 此时 _head 和 _tail 之间是空白区。举个例子，假如 _head = n, _tail = n - 1，
-	* 则空白的区域大小为：
-	* _head - _tail = n - (n - 1) = n - n + 1 = 1
-	* 则缓冲区内容长度为：
-	* _buffer_size - (_head - _tail) = _buffer_size - 1。
-	*
-	* 上面我们用特殊性的例子得出了具有普遍性的公式： _buffer_size - (_head - _tail)。
-	*/
+	/* _head 大于 _tail。说明 _tail 穿梭了。
+	 *
+	 * 此时 _head 和 _tail 之间是空白区。
+	 * 举个例子，假如 _head = n, _tail = n - 1，
+	 * 则空白的区域大小为：
+	 * 		_head - _tail = n - (n - 1) = n - n + 1 = 1
+	 * 则缓冲区内容长度为：
+	 * 		_buffer_size - (_head - _tail) = _buffer_size - 1。
+	 *
+	 * 上面我们用特殊性的例子得出了具有普遍性的公式：
+	 * 		 _buffer_size - (_head - _tail)。
+	 */
 	return _buffer_size - (_head - _tail);
 }
 
 void CircleBufferMemoryStream::SetLength(int64_t value)
 {
-	throw std::runtime_error { "不支持的操作" };
+	throw std::runtime_error{"不支持的操作"};
 }
 
 int32_t CircleBufferMemoryStream::Read(uint8_t *buffer, int32_t offset, int32_t count)
@@ -184,7 +179,7 @@ void CircleBufferMemoryStream::Write(uint8_t const *buffer, int32_t offset, int3
 {
 	if (AvailableToWrite() < count)
 	{
-		throw std::overflow_error { "缓冲区剩余空间无法接受这么多数据" };
+		throw std::overflow_error{"缓冲区剩余空间无法接受这么多数据"};
 	}
 
 	if (count <= _buffer_size - _tail)
@@ -204,10 +199,10 @@ void CircleBufferMemoryStream::Write(uint8_t const *buffer, int32_t offset, int3
 
 int64_t CircleBufferMemoryStream::Position()
 {
-	throw std::runtime_error { "不支持的操作" };
+	throw std::runtime_error{"不支持的操作"};
 }
 
 void CircleBufferMemoryStream::SetPosition(int64_t value)
 {
-	throw std::runtime_error { "不支持的操作" };
+	throw std::runtime_error{"不支持的操作"};
 }
