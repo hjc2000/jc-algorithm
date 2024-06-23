@@ -1,3 +1,4 @@
+#pragma once
 #include <base/signal/ISignalSource.h>
 #include <math.h>
 
