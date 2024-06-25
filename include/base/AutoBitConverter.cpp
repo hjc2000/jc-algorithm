@@ -14,7 +14,7 @@ base::AutoBitConverter::AutoBitConverter(std::endian remote_endian)
 {
 }
 
-uint16_t base::AutoBitConverter::ToUInt16(uint8_t *buffer, int offset)
+uint16_t base::AutoBitConverter::ToUInt16(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
@@ -25,7 +25,7 @@ uint16_t base::AutoBitConverter::ToUInt16(uint8_t *buffer, int offset)
 	return ret;
 }
 
-int16_t base::AutoBitConverter::ToInt16(uint8_t *buffer, int offset)
+int16_t base::AutoBitConverter::ToInt16(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
@@ -36,7 +36,7 @@ int16_t base::AutoBitConverter::ToInt16(uint8_t *buffer, int offset)
 	return ret;
 }
 
-uint32_t base::AutoBitConverter::ToUInt32(uint8_t *buffer, int offset)
+uint32_t base::AutoBitConverter::ToUInt32(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
@@ -47,7 +47,7 @@ uint32_t base::AutoBitConverter::ToUInt32(uint8_t *buffer, int offset)
 	return ret;
 }
 
-int32_t base::AutoBitConverter::ToInt32(uint8_t *buffer, int offset)
+int32_t base::AutoBitConverter::ToInt32(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
@@ -58,7 +58,7 @@ int32_t base::AutoBitConverter::ToInt32(uint8_t *buffer, int offset)
 	return ret;
 }
 
-uint64_t base::AutoBitConverter::ToUInt64(uint8_t *buffer, int offset)
+uint64_t base::AutoBitConverter::ToUInt64(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
@@ -69,7 +69,7 @@ uint64_t base::AutoBitConverter::ToUInt64(uint8_t *buffer, int offset)
 	return ret;
 }
 
-int64_t base::AutoBitConverter::ToInt64(uint8_t *buffer, int offset)
+int64_t base::AutoBitConverter::ToInt64(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
@@ -80,7 +80,7 @@ int64_t base::AutoBitConverter::ToInt64(uint8_t *buffer, int offset)
 	return ret;
 }
 
-float base::AutoBitConverter::ToFloat(uint8_t *buffer, int offset)
+float base::AutoBitConverter::ToFloat(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
@@ -91,7 +91,7 @@ float base::AutoBitConverter::ToFloat(uint8_t *buffer, int offset)
 	return ret;
 }
 
-double base::AutoBitConverter::ToDouble(uint8_t *buffer, int offset)
+double base::AutoBitConverter::ToDouble(uint8_t *buffer, int32_t offset)
 {
 	if (ShouldReverse())
 	{
