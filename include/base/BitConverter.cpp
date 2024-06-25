@@ -141,6 +141,7 @@ std::array<uint8_t, 4> base::BitConverter::GetBytes(float value)
 		buffer[2],
 		buffer[3],
 	};
+
 	return ret;
 }
 
