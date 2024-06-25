@@ -30,6 +30,20 @@ namespace base
 		static double ToDouble(uint8_t const *buffer, int32_t offset);
 #pragma endregion
 
+#pragma region 转到缓冲区
+		static void GetBytes(uint16_t value, uint8_t *out_buffer, int32_t offset);
+		static void GetBytes(int16_t value, uint8_t *out_buffer, int32_t offset);
+
+		static void GetBytes(uint32_t value, uint8_t *out_buffer, int32_t offset);
+		static void GetBytes(int32_t value, uint8_t *out_buffer, int32_t offset);
+
+		static void GetBytes(uint64_t value, uint8_t *out_buffer, int32_t offset);
+		static void GetBytes(int64_t value, uint8_t *out_buffer, int32_t offset);
+
+		static void GetBytes(float value, uint8_t *out_buffer, int32_t offset);
+		static void GetBytes(double value, uint8_t *out_buffer, int32_t offset);
+#pragma endregion
+
 #pragma region 转字节数组
 		static std::array<uint8_t, 2> GetBytes(uint16_t value);
 		static std::array<uint8_t, 2> GetBytes(int16_t value);
