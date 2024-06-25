@@ -122,7 +122,6 @@ void base::BitConverter::GetBytes(double value, uint8_t *out_buffer, int32_t off
 #pragma region 转字节数组
 std::array<uint8_t, 2> base::BitConverter::GetBytes(uint16_t value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 2> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
@@ -130,7 +129,6 @@ std::array<uint8_t, 2> base::BitConverter::GetBytes(uint16_t value)
 
 std::array<uint8_t, 2> base::BitConverter::GetBytes(int16_t value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 2> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
@@ -138,7 +136,6 @@ std::array<uint8_t, 2> base::BitConverter::GetBytes(int16_t value)
 
 std::array<uint8_t, 4> base::BitConverter::GetBytes(uint32_t value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 4> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
@@ -146,7 +143,6 @@ std::array<uint8_t, 4> base::BitConverter::GetBytes(uint32_t value)
 
 std::array<uint8_t, 4> base::BitConverter::GetBytes(int32_t value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 4> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
@@ -154,7 +150,6 @@ std::array<uint8_t, 4> base::BitConverter::GetBytes(int32_t value)
 
 std::array<uint8_t, 8> base::BitConverter::GetBytes(uint64_t value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 8> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
@@ -162,7 +157,6 @@ std::array<uint8_t, 8> base::BitConverter::GetBytes(uint64_t value)
 
 std::array<uint8_t, 8> base::BitConverter::GetBytes(int64_t value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 8> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
@@ -170,7 +164,6 @@ std::array<uint8_t, 8> base::BitConverter::GetBytes(int64_t value)
 
 std::array<uint8_t, 4> base::BitConverter::GetBytes(float value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 4> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
@@ -178,7 +171,6 @@ std::array<uint8_t, 4> base::BitConverter::GetBytes(float value)
 
 std::array<uint8_t, 8> base::BitConverter::GetBytes(double value)
 {
-	uint8_t *buffer = reinterpret_cast<uint8_t *>(&value);
 	std::array<uint8_t, 8> ret;
 	GetBytes(value, ret.data(), 0);
 	return ret;
