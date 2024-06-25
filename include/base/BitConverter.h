@@ -13,20 +13,20 @@ namespace base
 		BitConverter &operator=(BitConverter const &o) = delete;
 
 	public:
-		static uint16_t ToUInt16(uint8_t *buffer, int offset);
-		static int16_t ToInt16(uint8_t *buffer, int offset);
+		static uint16_t ToUInt16(uint8_t *buffer, int32_t offset);
+		static int16_t ToInt16(uint8_t *buffer, int32_t offset);
 		static uint16_t ToUInt16(uint8_t high, uint8_t low);
 
-		static uint32_t ToUInt32(uint8_t *buffer, int offset);
-		static int32_t ToInt32(uint8_t *buffer, int offset);
+		static uint32_t ToUInt32(uint8_t *buffer, int32_t offset);
+		static int32_t ToInt32(uint8_t *buffer, int32_t offset);
 		static uint32_t ToUInt32(uint8_t b3, uint8_t b2, uint8_t b1, uint8_t b0);
 		static uint32_t ToUInt32(uint16_t high, uint16_t low);
 
-		static uint64_t ToUInt64(uint8_t *buffer, int offset);
-		static int64_t ToInt64(uint8_t *buffer, int offset);
+		static uint64_t ToUInt64(uint8_t *buffer, int32_t offset);
+		static int64_t ToInt64(uint8_t *buffer, int32_t offset);
 
-		static float ToFloat(uint8_t *buffer, int offset);
-		static double ToDouble(uint8_t *buffer, int offset);
+		static float ToFloat(uint8_t *buffer, int32_t offset);
+		static double ToDouble(uint8_t *buffer, int32_t offset);
 
 		static std::array<uint8_t, 2> GetBytes(uint16_t value);
 		static std::array<uint8_t, 2> GetBytes(int16_t value);
