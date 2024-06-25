@@ -112,6 +112,80 @@ double base::AutoBitConverter::ToDouble(uint8_t const *buffer, int32_t offset)
 }
 #pragma endregion
 
+#pragma region 转到缓冲区
+void base::AutoBitConverter::GetBytes(uint16_t value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 2);
+	}
+}
+
+void base::AutoBitConverter::GetBytes(int16_t value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 2);
+	}
+}
+
+void base::AutoBitConverter::GetBytes(uint32_t value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 4);
+	}
+}
+
+void base::AutoBitConverter::GetBytes(int32_t value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 4);
+	}
+}
+
+void base::AutoBitConverter::GetBytes(uint64_t value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 8);
+	}
+}
+
+void base::AutoBitConverter::GetBytes(int64_t value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 8);
+	}
+}
+
+void base::AutoBitConverter::GetBytes(float value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 4);
+	}
+}
+
+void base::AutoBitConverter::GetBytes(double value, uint8_t *out_buffer, int32_t offset)
+{
+	BitConverter::GetBytes(value, out_buffer, offset);
+	if (ShouldReverse())
+	{
+		std::reverse(out_buffer + offset, out_buffer + offset + 8);
+	}
+}
+#pragma endregion
+
 #pragma region 转成字节数组
 std::array<uint8_t, 2> base::AutoBitConverter::GetBytes(uint16_t value)
 {
