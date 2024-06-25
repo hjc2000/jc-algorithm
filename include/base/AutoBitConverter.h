@@ -17,18 +17,21 @@ namespace base
 		/// @param remote_endian 对方主机的字节序
 		AutoBitConverter(std::endian remote_endian);
 
-		uint16_t ToUInt16(uint8_t *buffer, int32_t offset);
-		int16_t ToInt16(uint8_t *buffer, int32_t offset);
+#pragma region 转成数字类型
+		uint16_t ToUInt16(uint8_t const *buffer, int32_t offset);
+		int16_t ToInt16(uint8_t const *buffer, int32_t offset);
 
-		uint32_t ToUInt32(uint8_t *buffer, int32_t offset);
-		int32_t ToInt32(uint8_t *buffer, int32_t offset);
+		uint32_t ToUInt32(uint8_t const *buffer, int32_t offset);
+		int32_t ToInt32(uint8_t const *buffer, int32_t offset);
 
-		uint64_t ToUInt64(uint8_t *buffer, int32_t offset);
-		int64_t ToInt64(uint8_t *buffer, int32_t offset);
+		uint64_t ToUInt64(uint8_t const *buffer, int32_t offset);
+		int64_t ToInt64(uint8_t const *buffer, int32_t offset);
 
-		float ToFloat(uint8_t *buffer, int32_t offset);
-		double ToDouble(uint8_t *buffer, int32_t offset);
+		float ToFloat(uint8_t const *buffer, int32_t offset);
+		double ToDouble(uint8_t const *buffer, int32_t offset);
+#pragma endregion
 
+#pragma region 转成字节数组
 		std::array<uint8_t, 2> GetBytes(uint16_t value);
 		std::array<uint8_t, 2> GetBytes(int16_t value);
 
@@ -40,5 +43,6 @@ namespace base
 
 		std::array<uint8_t, 4> GetBytes(float value);
 		std::array<uint8_t, 8> GetBytes(double value);
+#pragma endregion
 	};
 }
