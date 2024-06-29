@@ -82,6 +82,12 @@ namespace base
 		explicit operator double() const;
 		explicit operator std::string() const;
 #pragma endregion
+
+		bool operator==(Fraction const &value) const;
+		bool operator<(Fraction const &value) const;
+		bool operator>(Fraction const &value) const;
+		bool operator<=(Fraction const &value) const;
+		bool operator>=(Fraction const &value) const;
 	};
 }
 
