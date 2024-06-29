@@ -10,15 +10,25 @@ namespace base
 		: base::ISignalSource<double>
 	{
 	private:
-		double _sin_periodic = 1;
-		double _sample_interval = 0.1;
-		PeriodicSamplingClock<double> _sample_clock;
+		base::Fraction _sample_interval{1, 10};
+		PeriodicSamplingClock<base::Fraction> _sample_clock;
+		bool _opened = false;
 
 	public:
 		/// @brief
 		/// @param sin_periodic 正弦信号的最小正周期
 		/// @param sample_interval 采样的时间间隔
-		SinSignalSource(double sin_periodic, double sample_interval);
+		SinSignalSource(double sin_periodic);
+
+		/// @brief 采样间隔。单位：秒。
+		/// @return
+		base::Fraction SampleInterval() const override;
+
+		/// @brief 设置采样间隔。单位：秒。
+		/// @param value
+		void SetSampleInterval(base::Fraction value) override;
+
+		void Open() override;
 
 		/// @brief 采样一次。
 		/// @note 调用者不需要延时，每次采样都会自动将内部维护的时间递增构造函数

@@ -58,6 +58,13 @@ namespace base
 		}
 #pragma endregion
 
+		/// @brief 本时钟的周期
+		/// @return
+		TimeType Period() const
+		{
+			return _period;
+		}
+
 		TimeType Time() const
 		{
 			return _time;
