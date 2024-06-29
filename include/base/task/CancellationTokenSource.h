@@ -1,19 +1,21 @@
 #pragma once
-#include<base/task/CancellationToken.h>
+#include <base/task/CancellationToken.h>
 
 namespace base
 {
-	/// <summary>
-	///		取消令牌源
-	/// </summary>
+	/// @brief 取消令牌源
 	class CancellationTokenSource
 	{
 	private:
-		std::shared_ptr<CancellationToken> _token { new CancellationToken { } };
+		std::shared_ptr<CancellationToken> _token{new CancellationToken{}};
 
 	public:
-		bool IsCancellationRequested();
+		bool IsCancellationRequested() const;
 		std::shared_ptr<CancellationToken> Token() const;
+
+		/// @brief 取消
+		/// @warning 没有将宏变量 HAS_THREAD 定义为真的话，本方法禁止在多个线程中调用，
+		/// 因为此时缺少互斥锁保护。
 		void Cancel();
 	};
 }

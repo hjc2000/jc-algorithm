@@ -1,9 +1,9 @@
-#include"CancellationTokenSource.h"
+#include "CancellationTokenSource.h"
 
 using namespace std;
 using namespace base;
 
-bool CancellationTokenSource::IsCancellationRequested()
+bool CancellationTokenSource::IsCancellationRequested() const
 {
 	return _token->IsCancellationRequested();
 }
