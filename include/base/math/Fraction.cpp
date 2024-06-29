@@ -4,6 +4,7 @@
 
 using namespace base;
 
+#pragma region 生命周期
 base::Fraction::Fraction(int64_t num)
 {
 	SetNum(num);
@@ -35,6 +36,7 @@ Fraction &base::Fraction::operator=(int64_t o)
 	SetDen(1);
 	return *this;
 }
+#pragma endregion
 
 int64_t base::Fraction::Num() const
 {
@@ -157,6 +159,7 @@ Fraction &base::Fraction::operator/=(Fraction const &value)
 	return *this;
 }
 
+#pragma region 强制转换
 int64_t base::Fraction::Div() const
 {
 	return _num / _den;
@@ -167,11 +170,33 @@ int64_t base::Fraction::Mod() const
 	return _num % _den;
 }
 
+double base::Fraction::ToDouble()
+{
+	return static_cast<double>(_num) / _den;
+}
+
 std::string base::Fraction::ToString() const
 {
 	return std::to_string(_num) + " / " + std::to_string(_den);
 }
 
+base::Fraction::operator int64_t()
+{
+	return Div();
+}
+
+base::Fraction::operator double()
+{
+	return ToDouble();
+}
+
+base::Fraction::operator std::string()
+{
+	return ToString();
+}
+#pragma endregion
+
+#pragma region 全局重载运算符
 std::ostream &operator<<(std::ostream &ostream, base::Fraction const &fraction)
 {
 	ostream << fraction.ToString();
@@ -197,3 +222,4 @@ base::Fraction operator/(int64_t left, base::Fraction const &right)
 {
 	return base::Fraction{left} / right;
 }
+#pragma endregion
