@@ -170,7 +170,7 @@ int64_t base::Fraction::Mod() const
 	return _num % _den;
 }
 
-double base::Fraction::ToDouble()
+double base::Fraction::ToDouble() const
 {
 	return static_cast<double>(_num) / _den;
 }
@@ -180,17 +180,17 @@ std::string base::Fraction::ToString() const
 	return std::to_string(_num) + " / " + std::to_string(_den);
 }
 
-base::Fraction::operator int64_t()
+base::Fraction::operator int64_t() const
 {
 	return Div();
 }
 
-base::Fraction::operator double()
+base::Fraction::operator double() const
 {
 	return ToDouble();
 }
 
-base::Fraction::operator std::string()
+base::Fraction::operator std::string() const
 {
 	return ToString();
 }

@@ -26,9 +26,35 @@ namespace base
 			_time = 0;
 		}
 
-		PeriodicSamplingClock &operator+=(TimeType time)
+#pragma region 四则运算符
+		PeriodicSamplingClock &operator+=(TimeType value)
 		{
-			_time += time;
+			_time += value;
+			AdjustTime();
+		}
+
+		PeriodicSamplingClock &operator-=(TimeType value)
+		{
+			_time -= value;
+			AdjustTime();
+		}
+
+		PeriodicSamplingClock &operator*=(TimeType value)
+		{
+			_time *= value;
+			AdjustTime();
+		}
+
+		PeriodicSamplingClock &operator/=(TimeType value)
+		{
+			_time /= value;
+			AdjustTime();
+		}
+#pragma endregion
+
+		TimeType Time() const
+		{
+			return _time;
 		}
 	};
 } // namespace base

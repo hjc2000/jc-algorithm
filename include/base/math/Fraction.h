@@ -72,15 +72,15 @@ namespace base
 		/// @return
 		int64_t Mod() const;
 
-		double ToDouble();
+		double ToDouble() const;
 
 		/// @brief 将分数转化为字符串
 		/// @return
 		std::string ToString() const;
 
-		explicit operator int64_t();
-		explicit operator double();
-		explicit operator std::string();
+		explicit operator int64_t() const;
+		explicit operator double() const;
+		explicit operator std::string() const;
 #pragma endregion
 	};
 }
