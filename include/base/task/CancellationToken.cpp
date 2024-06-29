@@ -5,8 +5,7 @@ using namespace base;
 
 void CancellationToken::Cancel()
 {
-	/*
-	 * 只有取消过一次，即调用本函数一次后，_is_cancellation_request
+	/* 只有取消过一次，即调用本函数一次后，_is_cancellation_request
 	 * 才会为 true。
 	 * _is_cancellation_request 为 true 表示已经取消过一次了，
 	 * 这时候就不要重复取消了
