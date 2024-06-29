@@ -8,9 +8,8 @@ namespace base
 	public:
 		virtual ~ISignalSource() = default;
 
-		/// @brief 非实时采样。传入时刻，获取对应时刻的信号值。
-		/// @param time 采样时刻。
-		/// @return
+		/// @brief 采样一次。
+		/// @return 采样值。
 		virtual SignalType Sample() = 0;
 	};
 }

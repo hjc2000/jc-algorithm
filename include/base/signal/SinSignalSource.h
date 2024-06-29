@@ -20,6 +20,11 @@ namespace base
 		/// @param sample_interval 采样的时间间隔
 		SinSignalSource(double sin_periodic, double sample_interval);
 
+		/// @brief 采样一次。
+		/// @note 调用者不需要延时，每次采样都会自动将内部维护的时间递增构造函数
+		/// 传进来的 sample_interval。
+		///
+		/// @return 采样值。
 		double Sample() override;
 	};
 }
