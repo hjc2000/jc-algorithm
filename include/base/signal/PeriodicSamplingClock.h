@@ -33,24 +33,28 @@ namespace base
 		{
 			_time += value;
 			AdjustTime();
+			return *this;
 		}
 
 		PeriodicSamplingClock &operator-=(TimeType value)
 		{
 			_time -= value;
 			AdjustTime();
+			return *this;
 		}
 
 		PeriodicSamplingClock &operator*=(TimeType value)
 		{
 			_time *= value;
 			AdjustTime();
+			return *this;
 		}
 
 		PeriodicSamplingClock &operator/=(TimeType value)
 		{
 			_time /= value;
 			AdjustTime();
+			return *this;
 		}
 #pragma endregion
 

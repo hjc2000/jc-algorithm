@@ -7,19 +7,19 @@ namespace base
 {
 	/// @brief 正弦信号源 y = sin(w * t)
 	class SinSignalSource
-		: base::ISignalSource<double, PeriodicSamplingClock<double>>
+		: base::ISignalSource<double>
 	{
 	private:
-		double _periodic;
+		double _sin_periodic = 1;
+		double _sample_interval = 0.1;
+		PeriodicSamplingClock<double> _sample_clock;
 
 	public:
 		/// @brief
-		/// @param periodic 最小正周期
-		SinSignalSource(double periodic);
+		/// @param sin_periodic 正弦信号的最小正周期
+		/// @param sample_interval 采样的时间间隔
+		SinSignalSource(double sin_periodic, double sample_interval);
 
-		/// @brief 采样 time 时刻的值。
-		/// @param time 时刻。
-		/// @return
-		double Sample(PeriodicSamplingClock<double> time) override;
+		double Sample() override;
 	};
 }
