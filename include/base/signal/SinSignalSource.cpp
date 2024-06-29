@@ -1,7 +1,7 @@
 #include "SinSignalSource.h"
 #include <stdexcept>
 
-base::SinSignalSource::SinSignalSource(double sin_periodic)
+base::SinSignalSource::SinSignalSource(base::Fraction sin_periodic)
 	: _sample_clock(sin_periodic)
 {
 }

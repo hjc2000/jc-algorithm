@@ -18,14 +18,13 @@ namespace base
 	{
 	private:
 		base::Fraction _sample_interval{1, 10};
-		PeriodicSamplingClock<base::Fraction> _sample_clock;
+		PeriodicSamplingClock _sample_clock;
 		bool _opened = false;
 
 	public:
 		/// @brief
 		/// @param sin_periodic 正弦信号的最小正周期
-		/// @param sample_interval 采样的时间间隔
-		SinSignalSource(double sin_periodic);
+		SinSignalSource(base::Fraction sin_periodic);
 
 		/// @brief 采样间隔。单位：秒。
 		/// @return
@@ -35,6 +34,8 @@ namespace base
 		/// @param value
 		void SetSampleInterval(base::Fraction value) override;
 
+		/// @brief 打开采样器。
+		/// @note 打开后不能更改属性。
 		void Open() override;
 
 		/// @brief 采样一次。
