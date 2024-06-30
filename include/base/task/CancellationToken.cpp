@@ -18,13 +18,13 @@ void CancellationToken::Cancel()
 
 #if HAS_THREAD
 	std::lock_guard l(_lock);
-#endif
 
 	if (_is_cancellation_request)
 	{
 		// 竞争锁后再次确认
 		return;
 	}
+#endif
 
 	_is_cancellation_request = true;
 
