@@ -15,6 +15,7 @@ namespace base
 		/// @brief 冲洗消费者
 		virtual void Flush()
 		{
+			// 派生类不一定需要冲洗，所以这里不定义为纯虚函数
 		}
 	};
 } // namespace base
