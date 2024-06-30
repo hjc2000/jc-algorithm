@@ -2,7 +2,7 @@
 
 namespace base
 {
-	template<typename T>
+	template <typename T>
 	class IList
 	{
 	public:
@@ -18,7 +18,7 @@ namespace base
 		virtual T &operator[](int index) = 0;
 		virtual T const &operator[](int index) const = 0;
 
-		#pragma region 迭代器
+#pragma region 迭代器
 		class IListIterator
 		{
 		private:
@@ -26,11 +26,10 @@ namespace base
 			int _index;
 
 		public:
-			IListIterator(IList<T> *list, int index) :
-				_list(list),
-				_index(index)
+			IListIterator(IList<T> *list, int index)
+				: _list(list),
+				  _index(index)
 			{
-
 			}
 
 			T &operator*() const
@@ -59,7 +58,7 @@ namespace base
 		{
 			return IListIterator(this, Count());
 		}
-		#pragma endregion
+#pragma endregion
 
 		/// <summary>
 		///		两个 IList 对象的指针相等时才认为相等。
