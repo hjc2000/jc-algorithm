@@ -2,6 +2,9 @@
 
 namespace base
 {
+	/// @brief
+	/// @tparam T 必须是具有无参构造函数的类，实在不行可以用智能指针包装起来，
+	/// 让 T 是一个智能指针。
 	template <typename T>
 	class ISource
 	{
