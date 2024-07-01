@@ -24,7 +24,7 @@ namespace base
 		/// 其他消费者不受影响，那这些消费者就不应该在 SendFrame 方法中抛出异常。
 		///
 		/// @param data
-		void SendDataToEachConsumer(T data)
+		void SendDataToEachConsumer(T &data)
 		{
 			for (std::shared_ptr<base::IConsumer<T>> &consumer : ConsumerList())
 			{
