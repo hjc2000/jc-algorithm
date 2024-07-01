@@ -24,11 +24,11 @@ namespace base
 		/// @param cancellationToken
 		/// @return
 		virtual int PumpTo(base::IConsumer<T> &consumer,
-						   base::CancellationToken &cancellationToken)
+						   std::shared_ptr<base::CancellationToken> cancellationToken)
 		{
 			while (true)
 			{
-				if (cancellationToken.IsCancellationRequested())
+				if (cancellationToken->IsCancellationRequested())
 				{
 					throw base::TaskCanceledException{"PumpTo 函数被取消。"};
 				}
